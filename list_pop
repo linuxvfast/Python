@@ -1,0 +1,55 @@
+s=[1,2,3,1,1,2,2,1,1,2,3]
+
+
+'''
+#match 1 to delete
+i=c=0
+while i <len(s):
+    if s[i]==1:
+        print i,s.pop(i)
+        print ''
+        print s
+        c+=1
+        i-=1 #当删除一个匹配到的1之后，索引会加1，需要减1回到删除之前的索引重新匹配
+    i+=1
+'''
+
+'''
+#Keep the first match 1 is not deleted
+i=c=0
+while i <len(s):
+    if s[i]==1:
+        tm1=s[:i+1]
+        tm2=s[i+1:]
+        break
+    i+=1
+j=0
+while j <len(tm2):
+    if tm2[j]==1:
+        tm2.pop(j)
+        j-=1
+    j+=1
+s=tm1+tm2
+
+print s
+'''
+
+
+#keep different numbers
+i = 0
+while i < len(s):
+    if s.count(s[i]) > 1: #统计相同数的和是否大于1
+        p = s.index(s[i])  #获取相同数大于1的索引值
+        tm1 = s[:p+1]   #保留第一个匹配的数字
+        tm2 = s[p+1:] 
+        #将相等的数字删除
+        j = 0
+        while j < len(tm2):
+            if tm2[j] == s[i]:  
+                tm2.pop(j)
+                j -= 1
+            j += 1
+        s = tm1 + tm2
+    i += 1
+print s
+    
