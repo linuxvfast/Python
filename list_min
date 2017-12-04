@@ -1,0 +1,26 @@
+import random
+li = range(100,10000)
+li1=random.sample(li,10)   #获取随机数列表中的10个数字组成新的列表
+li2=random.sample(li,10)
+li3=random.sample(li,10)
+print li1
+print li2
+print li3
+
+#新建空的列表存放最小值
+li4 = []
+
+#比较3个值的大小
+def fmin(a,b,c):
+    if a < b:
+        if a < c:
+            return a
+    else:
+        if b < c:
+            return b
+        else:
+            return c
+            
+#通过map函数实现函数和参数的简便调用
+li4 = map(fmin,li1,li2,li3)
+print li4
