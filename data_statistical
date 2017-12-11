@@ -1,0 +1,47 @@
+'''随机生成10万个key，指定name，year，民族，和男女比例，组成字典，
+统计1995年的人数和姓名，以及男女比例'''
+
+import random
+
+#generate keys
+l=range(0,1000000)
+k=random.sample(l,100000)
+
+#keys and values to generate a dictionary 
+coms = {}
+for n in range(0,100000):
+    v = []
+    name = "define" + str(k[n])   #define name
+    year = random.randint(1990,2000) #define year of birth(出生)
+    
+    #20% is 蒙古族
+    if n % 5 == 1:
+        national = "menggu"
+    else:
+        national = "hanzu"
+        
+    #33% is 女生
+    if n % 3 == 1:
+        sex = "nv"
+    else:
+        sex = "man"
+    
+    v = [name,year,national,sex]
+    coms.setdefault(k[n],v) #combination of keys and valus
+
+vv = coms.values()
+c = 0 #1995 the number of people
+m = 0 #the number of grils
+
+#according to the condition of statistical
+for x in vv:
+    if x[1] == 1995:
+        c += 1
+        print x[0]
+
+        if x[3] == 'nv':
+            m += 1
+            
+#the statistical ratio    
+bl = m * 1.0 / c 
+print '1995 year  total :',c,bl
