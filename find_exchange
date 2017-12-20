@@ -1,0 +1,83 @@
+# -*- coding: utf-8 -*-
+"""
+查找五条线路的交点，以及换乘路线
+"""
+r = '''aa bb ct uu dd yy fg
+tt yy ww mm cc bx hh
+ss dd zz bx
+ii mm bc gg
+tx cx bx qq
+pp cx gg nn ee'''
+
+#List all routes
+def Findstr(s):
+    re = r.split("\n")
+    alist = []
+    i = 0
+    for p in re:
+        print 'r'+str(i),p.split()
+        alist.append(p.split())
+        i += 1
+    return alist
+    
+d = []    
+d = Findstr(r)
+#print d
+
+#find begin and end
+b = [] #save start  postion
+e = [] #save end postion
+c = [] #save exchange postion
+bex = [] #开始位置与中间线路的交点存放
+eex = [] #结束位置与中间线路的交点存放
+
+sn = "bb" #start postion
+en = "ee" #end postion
+
+def Findexchange(r1,r2):
+    li = []    
+    for x in r1:
+        if x in r2:
+#            sx = r1.index(x)
+#            ex = r2.index(x)
+            temp = x,r1.index(x),r2.index(x)
+            li.append(temp)
+    if len(li) ==  0:
+        return [(-1,-1,-1)]
+        
+    return li
+#判断交点    
+def connect(r,t):
+    li = []
+    for x in r:
+        for y in t:
+            ret = Findexchange(d[x],d[y])
+            if ret[0][0] != -1:
+                li.append(y)
+                print x,y,ret
+    return li
+#To find the start and end of the road
+def Findstation(allroad,se): #se 表示起点和终点的位置 allroad为所有的录像
+    i = 0
+    for dr in d:
+        px = Findexchange(dr,[sn,en])    
+        print px        
+        for p in px:
+            if p[0] == "bb":
+                b.append(i)
+            elif p[0] == "ee":
+                e.append(i)
+            else:
+                c.append(i)
+        i += 1 
+print '------------------'    
+Findstation(d,[sn,en])
+print b,e,c
+bex = connect(b,c)
+print 'bex',bex
+eex = connect(e,c)
+print 'bex',eex
+ze = connect(bex,eex)
+print ze
+
+不会的代码，照着抄下来看看
