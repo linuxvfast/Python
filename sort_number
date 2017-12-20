@@ -1,0 +1,66 @@
+li = [11,32,3,62,77,19,23]
+print li
+'''
+t = li[0]
+i = 1
+while i < len(li):
+    if li[0] < li[i]:
+        li[0] = li[i]
+        pos = i
+    i += 1  
+li[0],li[pos] = li[pos],t
+print li
+print '----------------'
+
+t = li[1]
+i = 2
+while i < len(li):
+    if li[1] < li[i]:
+        li[1] = li[i]
+        pos = i
+    i += 1  
+li[1],li[pos] = li[pos],t
+print li
+print '-----------------'
+t = li[2]
+print t
+i = 3
+while i < len(li):
+    if li[2] < li[i]:
+        li[2] = li[i]
+        pos = i
+    i += 1  
+li[2],li[pos] = li[pos],t
+print li
+print '-----------------'
+t = li[3]
+i = 4
+while i < len(li):
+    if li[3] < li[i]:
+        li[3] = li[i]
+        pos = i
+    i += 1  
+li[3],li[pos] = li[pos],t
+print li
+'''
+
+
+‘’‘列表的排序’‘’
+i = 0
+while i < len(li) - 1:  #遍历列表li
+    j = i + 1
+    t = li[i]  
+    
+    #取前一个值与后面的值做比较
+    while j < len(li):
+        if li[i] < li[j]:
+            li[i] = li[j]
+            pos = j
+        j += 1
+#    if t < li[pos]:
+    li[i],li[pos] = li[pos],t   #把替换的值交换位置
+    i += 1
+print li
+
+    
+
