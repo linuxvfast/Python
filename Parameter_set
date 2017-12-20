@@ -39,6 +39,17 @@ def max(m,*kw):
     return li[-1]
 print max(15,12,40,23)
 '''
+'''
+def max(m,*b):
+    li = list(b)
+    li.sort()
+    max = li[-1]
+    if max > m:
+        return max
+    else:
+        return m
+ print max(10,24,56,21)
+'''
 
 
 def max(*args):
