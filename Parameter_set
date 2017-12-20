@@ -31,6 +31,15 @@ def max(m,*kw):
     return l1[-1]
 print max(10,14,35,13,56)
 '''
+'''
+def max(m,*kw):
+    li = list(kw)
+    li.insert(0,m)
+    li.sort()
+    return li[-1]
+print max(15,12,40,23)
+'''
+
 
 def max(*args):
     li = list(args)
