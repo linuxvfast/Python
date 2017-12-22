@@ -1,0 +1,40 @@
+#coding: utf-8
+"""
+Created on Wed Nov 29 08:54:22 2017
+
+@author: tony
+"""
+'''查找字典中值相同时的键值（键值唯一）'''
+
+d1 = {'a':12,'b':13,'c':15,'d':20,'e':15,'f':12}
+
+print d1
+s = d1.values()  #取出字典中的值
+
+l1 = list(s)
+print l1
+
+d = set(s)    #使用set集合去重
+dd = list(d)
+print dd
+
+ll = list()
+
+#取出相同值
+for x in l1:
+    for y in dd:
+        if l1.count(x) > dd.count(y):
+            if x not in ll:
+                ll.append(x)
+            
+print ll
+
+#根据查找到相同值与原字典的值进行对比，取出相同值对应的键值
+results = list()
+for n in ll:
+    for z in d1.keys():
+        if n == d1[z]:
+            results.append(z)
+            
+print results
+        
