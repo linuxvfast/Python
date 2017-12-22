@@ -14,3 +14,7 @@ set函数可以去重，是一个无序的元素集合
 
 list.index(value,[start,[stop]])
 返回值value所在列表的索引值
+
+
+
+自定义模块，需要在*.pth文件中指定自定义模块的存放路径，一般存放在C:\Python27\site-packages下，也可以自定义路径
