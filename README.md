@@ -18,3 +18,11 @@ list.index(value,[start,[stop]])
 
 
 自定义模块，需要在*.pth文件中指定自定义模块的存放路径，一般存放在C:\Python27\site-packages下，也可以自定义路径
+
+例子
+fa = open(r'D:\python\a.txt','r')  #打开文件
+cout = fa.readline()  #读取一行数据
+#去除行中的换行符
+print cout.strip("\n")
+#关闭文件
+fa.close()
