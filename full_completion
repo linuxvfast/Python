@@ -1,0 +1,10 @@
+li = range(1,100)
+def four(x):
+    s = str(x)
+    while len(s) < 4:
+        s = '0' + s   #为不够位数的数字补0
+    return s
+for a in li:
+    print four(a)
+    
+   没有想到的方法保留一下
