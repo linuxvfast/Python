@@ -1,0 +1,21 @@
+ll = range(1,1000)
+
+#不够四位数字的全部用0补全
+def fors(x):
+    s = str(x)
+    while len(s) <  4:
+        s = '0' + s
+    return s
+
+   
+fw = open('out.txt','w')    
+for x in ll:
+    num = fors(x)
+    name = "jeapedu" + num
+    sex = 'f'
+    if x % 2 == 0:
+        sex = 'm'
+    ss = num + "\t" + name + "\t\t" + sex + "\n"
+    fw.write(ss)
+fw.close()
+print "write successful"
