@@ -1,0 +1,467 @@
+# -*- coding: utf-8 -*-
+#将文件test拆分之后存放在两个文件中
+
+test.txt文件内容如下
+1:root(1995):bin|bash
+2:bin(1996):sbin|nologin
+3:daemon(1995):sbin|nologin
+4:adm(1995):sbin|nologin
+5:lp(1995):sbin|nologin
+6:sync(1995):bin|sync
+7:shutdown(1995):sbin|shutdown
+8:root(1995):bin|bash
+9:bin(1996):sbin|nologin
+10:daemon(1995):sbin|nologin
+11:adm(1995):sbin|nologin
+12:lp(1995):sbin|nologin
+13:sync(1995):bin|sync
+14:shutdown(1995):sbin|shutdown
+15:root(1995):bin|bash
+16:bin(1996):sbin|nologin
+17:daemon(1995):sbin|nologin
+18:adm(1995):sbin|nologin
+19:lp(1995):sbin|nologin
+20:sync(1995):bin|sync
+21:shutdown(1995):sbin|shutdown
+22:root(1995):bin|bash
+23:bin(1996):sbin|nologin
+24:daemon(1995):sbin|nologin
+25:adm(1995):sbin|nologin
+26:lp(1995):sbin|nologin
+27:sync(1995):bin|sync
+28:shutdown(1995):sbin|shutdown
+29:root(1995):bin|bash
+30:bin(1996):sbin|nologin
+31:daemon(1995):sbin|nologin
+32:adm(1995):sbin|nologin
+33:lp(1995):sbin|nologin
+34:sync(1995):bin|sync
+35:shutdown(1995):sbin|shutdown
+36:root(1995):bin|bash
+37:bin(1996):sbin|nologin
+38:daemon(1995):sbin|nologin
+39:adm(1995):sbin|nologin
+40:lp(1995):sbin|nologin
+41:sync(1995):bin|sync
+42:shutdown(1995):sbin|shutdown
+43:root(1995):bin|bash
+44:bin(1996):sbin|nologin
+45:daemon(1995):sbin|nologin
+46:adm(1995):sbin|nologin
+47:lp(1995):sbin|nologin
+48:sync(1995):bin|sync
+49:shutdown(1995):sbin|shutdown
+50:root(1995):bin|bash
+51:bin(1996):sbin|nologin
+52:daemon(1995):sbin|nologin
+53:adm(1995):sbin|nologin
+54:lp(1995):sbin|nologin
+55:sync(1995):bin|sync
+56:shutdown(1995):sbin|shutdown
+57:root(1995):bin|bash
+58:bin(1996):sbin|nologin
+59:daemon(1995):sbin|nologin
+60:adm(1995):sbin|nologin
+61:lp(1995):sbin|nologin
+62:sync(1995):bin|sync
+63:shutdown(1995):sbin|shutdown
+64:root(1995):bin|bash
+65:bin(1996):sbin|nologin
+66:daemon(1995):sbin|nologin
+67:adm(1995):sbin|nologin
+68:lp(1995):sbin|nologin
+69:sync(1995):bin|sync
+70:shutdown(1995):sbin|shutdown
+71:root(1995):bin|bash
+72:bin(1996):sbin|nologin
+73:daemon(1995):sbin|nologin
+74:adm(1995):sbin|nologin
+75:lp(1995):sbin|nologin
+76:sync(1995):bin|sync
+77:shutdown(1995):sbin|shutdown
+78:root(1995):bin|bash
+79:bin(1996):sbin|nologin
+80:daemon(1995):sbin|nologin
+81:adm(1995):sbin|nologin
+82:lp(1995):sbin|nologin
+83:sync(1995):bin|sync
+84:shutdown(1995):sbin|shutdown
+85:root(1995):bin|bash
+86:bin(1996):sbin|nologin
+87:daemon(1995):sbin|nologin
+88:adm(1995):sbin|nologin
+89:lp(1995):sbin|nologin
+90:sync(1995):bin|sync
+91:shutdown(1995):sbin|shutdown
+92:root(1995):bin|bash
+93:bin(1996):sbin|nologin
+94:daemon(1995):sbin|nologin
+95:adm(1995):sbin|nologin
+96:lp(1995):sbin|nologin
+97:sync(1995):bin|sync
+98:shutdown(1995):sbin|shutdown
+99:root(1995):bin|bash
+100:bin(1996):sbin|nologin
+101:daemon(1995):sbin|nologin
+102:adm(1995):sbin|nologin
+103:lp(1995):sbin|nologin
+104:sync(1995):bin|sync
+105:shutdown(1995):sbin|shutdown
+
+
+
+#让编号与最大值保持一致，不够的补0
+def fors(x):
+    s = str(x)
+    while len(s) < 3:
+        s = '0' + s
+    return s
+
+
+#print fors(1)
+fr = open('test.txt','r')
+fw = open('info.txt','w')
+ft = open('cate.txt','w')
+fs = fr.read()
+la = fs.split("\n")  #通过换行符切列表
+#print la
+for x in la:
+    x = x.split(":")
+    nid = fors(x[0])  #获取id号
+    nname = x[1][:-6]  #获取冒号分割之后的名字
+    nyear = x[1][-5:-1]  #获取冒号分割之后的年
+    nclass = x[2]
+    ncate = nclass.split("|")  #获取最后的分类
+    #print ncate
+    lt = "\t"
+    sr = nid + lt + nname + lt + nyear + "\n"    
+    fw.write(sr)
+    for x in ncate:
+        cate = nid + lt + x + "\n" 
+        ft.write(cate)
+    
+ft.close()
+fw.close()
+fr.close()
+
+结果
+info.txt文件内容
+001	root	1995
+002	bin	1996
+003	daemon	1995
+004	adm	1995
+005	lp	1995
+006	sync	1995
+007	shutdown	1995
+008	root	1995
+009	bin	1996
+010	daemon	1995
+011	adm	1995
+012	lp	1995
+013	sync	1995
+014	shutdown	1995
+015	root	1995
+016	bin	1996
+017	daemon	1995
+018	adm	1995
+019	lp	1995
+020	sync	1995
+021	shutdown	1995
+022	root	1995
+023	bin	1996
+024	daemon	1995
+025	adm	1995
+026	lp	1995
+027	sync	1995
+028	shutdown	1995
+029	root	1995
+030	bin	1996
+031	daemon	1995
+032	adm	1995
+033	lp	1995
+034	sync	1995
+035	shutdown	1995
+036	root	1995
+037	bin	1996
+038	daemon	1995
+039	adm	1995
+040	lp	1995
+041	sync	1995
+042	shutdown	1995
+043	root	1995
+044	bin	1996
+045	daemon	1995
+046	adm	1995
+047	lp	1995
+048	sync	1995
+049	shutdown	1995
+050	root	1995
+051	bin	1996
+052	daemon	1995
+053	adm	1995
+054	lp	1995
+055	sync	1995
+056	shutdown	1995
+057	root	1995
+058	bin	1996
+059	daemon	1995
+060	adm	1995
+061	lp	1995
+062	sync	1995
+063	shutdown	1995
+064	root	1995
+065	bin	1996
+066	daemon	1995
+067	adm	1995
+068	lp	1995
+069	sync	1995
+070	shutdown	1995
+071	root	1995
+072	bin	1996
+073	daemon	1995
+074	adm	1995
+075	lp	1995
+076	sync	1995
+077	shutdown	1995
+078	root	1995
+079	bin	1996
+080	daemon	1995
+081	adm	1995
+082	lp	1995
+083	sync	1995
+084	shutdown	1995
+085	root	1995
+086	bin	1996
+087	daemon	1995
+088	adm	1995
+089	lp	1995
+090	sync	1995
+091	shutdown	1995
+092	root	1995
+093	bin	1996
+094	daemon	1995
+095	adm	1995
+096	lp	1995
+097	sync	1995
+098	shutdown	1995
+099	root	1995
+100	bin	1996
+101	daemon	1995
+102	adm	1995
+103	lp	1995
+104	sync	1995
+105	shutdown	1995
+
+
+
+cate.txt文件内容如下
+001	bin
+001	bash
+002	sbin
+002	nologin
+003	sbin
+003	nologin
+004	sbin
+004	nologin
+005	sbin
+005	nologin
+006	bin
+006	sync
+007	sbin
+007	shutdown
+008	bin
+008	bash
+009	sbin
+009	nologin
+010	sbin
+010	nologin
+011	sbin
+011	nologin
+012	sbin
+012	nologin
+013	bin
+013	sync
+014	sbin
+014	shutdown
+015	bin
+015	bash
+016	sbin
+016	nologin
+017	sbin
+017	nologin
+018	sbin
+018	nologin
+019	sbin
+019	nologin
+020	bin
+020	sync
+021	sbin
+021	shutdown
+022	bin
+022	bash
+023	sbin
+023	nologin
+024	sbin
+024	nologin
+025	sbin
+025	nologin
+026	sbin
+026	nologin
+027	bin
+027	sync
+028	sbin
+028	shutdown
+029	bin
+029	bash
+030	sbin
+030	nologin
+031	sbin
+031	nologin
+032	sbin
+032	nologin
+033	sbin
+033	nologin
+034	bin
+034	sync
+035	sbin
+035	shutdown
+036	bin
+036	bash
+037	sbin
+037	nologin
+038	sbin
+038	nologin
+039	sbin
+039	nologin
+040	sbin
+040	nologin
+041	bin
+041	sync
+042	sbin
+042	shutdown
+043	bin
+043	bash
+044	sbin
+044	nologin
+045	sbin
+045	nologin
+046	sbin
+046	nologin
+047	sbin
+047	nologin
+048	bin
+048	sync
+049	sbin
+049	shutdown
+050	bin
+050	bash
+051	sbin
+051	nologin
+052	sbin
+052	nologin
+053	sbin
+053	nologin
+054	sbin
+054	nologin
+055	bin
+055	sync
+056	sbin
+056	shutdown
+057	bin
+057	bash
+058	sbin
+058	nologin
+059	sbin
+059	nologin
+060	sbin
+060	nologin
+061	sbin
+061	nologin
+062	bin
+062	sync
+063	sbin
+063	shutdown
+064	bin
+064	bash
+065	sbin
+065	nologin
+066	sbin
+066	nologin
+067	sbin
+067	nologin
+068	sbin
+068	nologin
+069	bin
+069	sync
+070	sbin
+070	shutdown
+071	bin
+071	bash
+072	sbin
+072	nologin
+073	sbin
+073	nologin
+074	sbin
+074	nologin
+075	sbin
+075	nologin
+076	bin
+076	sync
+077	sbin
+077	shutdown
+078	bin
+078	bash
+079	sbin
+079	nologin
+080	sbin
+080	nologin
+081	sbin
+081	nologin
+082	sbin
+082	nologin
+083	bin
+083	sync
+084	sbin
+084	shutdown
+085	bin
+085	bash
+086	sbin
+086	nologin
+087	sbin
+087	nologin
+088	sbin
+088	nologin
+089	sbin
+089	nologin
+090	bin
+090	sync
+091	sbin
+091	shutdown
+092	bin
+092	bash
+093	sbin
+093	nologin
+094	sbin
+094	nologin
+095	sbin
+095	nologin
+096	sbin
+096	nologin
+097	bin
+097	sync
+098	sbin
+098	shutdown
+099	bin
+099	bash
+100	sbin
+100	nologin
+101	sbin
+101	nologin
+102	sbin
+102	nologin
+103	sbin
+103	nologin
+104	bin
+104	sync
+105	sbin
+105	shutdown
