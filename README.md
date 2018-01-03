@@ -34,3 +34,17 @@ mysql》》select * from tb2 where exists(select * from tb1 where id < 5);
 
 
 where条件后接  any（sql语句）或者all（sql语句） 可以多表查询
+
+#union 将两个等长字段的表连接显示
+mysql> select * from tb1 union select *  from tb3;
++------+------+------+
+| id   | name | year |
++------+------+------+
+| 4    | tom  | 1995 |
+| 1    | ask  | 1999 |
+| 4    | key  | 1995 |
+| 5    | jon  | 1991 |
+| 3    | a    | 1992 |
+| tom  | f    |    2 |
++------+------+------+
+6 rows in set (0.00 sec)
