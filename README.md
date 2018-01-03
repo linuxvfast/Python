@@ -26,3 +26,11 @@ cout = fa.readline()  #读取一行数据
 print cout.strip("\n")
 #关闭文件
 fa.close()
+
+
+mysql》》select * from tb2 where exists(select * from tb1 where id < 5);
+
+#如果exists的结果为真，前面的select语句可以得到结果，如果exists的结果为假，前面的select没有查询结果
+
+
+where条件后接  any（sql语句）或者all（sql语句） 可以多表查询
