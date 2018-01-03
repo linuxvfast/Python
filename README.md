@@ -48,3 +48,58 @@ mysql> select * from tb1 union select *  from tb3;
 | tom  | f    |    2 |
 +------+------+------+
 6 rows in set (0.00 sec)
+
+
+
+# left  join 和right join的使用
+mysql> select b2.*,b1.* from b2 left join b1 on b1.size = b2.size;   #以b2为基准，用b1的匹配，看b2中有b1的什么
++------+------+------+------+
+| size | name | id   | size |
++------+------+------+------+
+|   10 | ask  |    1 |   10 |
+|   20 | key  |    2 |   20 |
+|   30 | aaa  |    3 |   30 |
+|   40 | bbba | NULL | NULL |
+|   50 | cccc | NULL | NULL |
++------+------+------+------+
+5 rows in set (0.02 sec)
+
+mysql> select * from b2 left join b1 on (b1.size = b2.size )where name='key';
++------+------+------+------+
+| size | name | id   | size |
++------+------+------+------+
+|   20 | key  |    2 |   20 |
++------+------+------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from b1 left join b2 on b1.size = b2.size;
++------+------+------+------+
+| id   | size | size | name |
++------+------+------+------+
+|    1 |   10 |   10 | ask  |
+|    2 |   20 |   20 | key  |
+|    3 |   30 |   30 | aaa  |
++------+------+------+------+
+3 rows in set (0.00 sec)
+
+mysql> select * from b1 right join b2 on b1.size = b2.size;   #以b2位基准，匹配b1中有的
++------+------+------+------+
+| id   | size | size | name |
++------+------+------+------+
+|    1 |   10 |   10 | ask  |
+|    2 |   20 |   20 | key  |
+|    3 |   30 |   30 | aaa  |
+| NULL | NULL |   40 | bbba |
+| NULL | NULL |   50 | cccc |
++------+------+------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from b2 right join b1 on b1.size = b2.size;
++------+------+------+------+
+| size | name | id   | size |
++------+------+------+------+
+|   10 | ask  |    1 |   10 |
+|   20 | key  |    2 |   20 |
+|   30 | aaa  |    3 |   30 |
++------+------+------+------+
+3 rows in set (0.00 sec)
