@@ -1,0 +1,21 @@
+#-*- coding:utf-8 -*-
+import MySQLdb,random
+#连接本地的mysql服务
+conn = MySQLdb.connect(host = '127.0.0.1',user = 'root',passwd = '123456',
+                       db = 'test')
+print conn
+cur = conn.cursor()    #确定游标位置
+for x in range(100):
+    idm = random.randint(100,1000)
+    name = 'hello world' + str(idm)
+    sql = 'insert into class values(%s,"%s")' %(idm,name)
+    cur.execute(sql)
+    conn.commit()
+
+cur.execute("select * from class")  #发送执行的sql语句
+ret = cur.fetchall()  # 取回sql语句执行的结果
+for x in ret:
+    print x
+    
+cur.close()
+conn.close()
