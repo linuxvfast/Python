@@ -109,7 +109,8 @@ mysql> select * from b2 right join b1 on b1.size = b2.size;
 ================================
 import psutil
 
-#mem = psutil.virtual_memory()
+#mem = psutil.virtual_memory()   #获取内存的完整信息
+psutil.swap_memory()  #获取交换内存的信息
 #print mem.total,mem.used
 print psutil.cpu_times()  #显示所有的cpu信息
 print psutil.cpu_times(percpu=True)   #显示所有的逻辑cpu信息
