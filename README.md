@@ -117,3 +117,10 @@ print psutil.cpu_times(percpu=True)   #显示所有的逻辑cpu信息
 print psutil.cpu_times().user  #显示单个数据
 print psutil.cpu_count()   #显示服务器的cpu逻辑个数
 print psutil.cpu_count(logical=False) #显示服务器的物理cpu个数
+
+print psutil.disk_partitions()   #获取磁盘信息
+print psutil.disk_usage('/')   #获取磁盘的分区使用情况
+ss = psutil.disk_io_counters(perdisk=True)    #不加参数perdisk获取磁盘总的io个数和读写信息，加参数获取单个磁盘的io个数和读写信息
+
+for k,v in ss.items():
+    print k,v
