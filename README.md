@@ -124,3 +124,5 @@ ss = psutil.disk_io_counters(perdisk=True)    #不加参数perdisk获取磁盘�
 
 for k,v in ss.items():
     print k,v
+    
+print  psutil.net_io_counters()  #获取网络总的io信息，可以加参数(pernic=True)获取单个网络接口的io信息
