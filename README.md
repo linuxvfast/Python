@@ -103,3 +103,16 @@ mysql> select * from b2 right join b1 on b1.size = b2.size;
 |   30 | aaa  |    3 |   30 |
 +------+------+------+------+
 3 rows in set (0.00 sec)
+
+
+
+================================
+import psutil
+
+#mem = psutil.virtual_memory()
+#print mem.total,mem.used
+print psutil.cpu_times()  #显示所有的cpu信息
+print psutil.cpu_times(percpu=True)   #显示所有的逻辑cpu信息
+print psutil.cpu_times().user  #显示单个数据
+print psutil.cpu_count()   #显示服务器的cpu逻辑个数
+print psutil.cpu_count(logical=False) #显示服务器的物理cpu个数
