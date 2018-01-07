@@ -126,3 +126,21 @@ for k,v in ss.items():
     print k,v
     
 print  psutil.net_io_counters()  #获取网络总的io信息，可以加参数(pernic=True)获取单个网络接口的io信息
+====================================================================
+数据存储 
+json.dump() #将数据转储到文件
+json.load()  #从文件中读取数据
+
+例子：
+#-*- coding:utf-8 -*-
+
+import json
+# numbers = [2.3,4,7,11,13]
+
+filename = 'test.json'
+# with open(filename,'w') as file_obj:
+#     json.dump(numbers,file_obj)
+
+with open(filename) as file_read:
+    lins = json.load(file_read)
+    print(lins)
