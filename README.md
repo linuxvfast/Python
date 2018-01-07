@@ -202,3 +202,103 @@ assertIn(item , list )   核实  item 在  list 中
 
 assertNotIn(item , list ) 核实  item 不在  list 中
 
+
+断言测试例子
+names.py
+#-*- coding:utf-8 -*-
+#function 1
+# import unittest
+# from name_function import get_formatted_name
+#
+# print("Enter 'q' at any time to quit.")
+# while True:
+#     first = input("\nPlease give me a first name:")
+#     if first == 'q':
+#         break
+#     middle = input("Please give me a middle name:")
+#     if middle == 'q':
+#         break
+#     last = input("Please give me a last name:")
+#     if last == 'q':
+#         break
+#     formatted_name = get_formatted_name(first,middle,last)
+#     print("\tNeatly formatted name: " + formatted_name + ".")
+
+#print("==========================================")
+#function 2
+import unittest
+from name_function import get_formatted_name
+
+print("Enter 'q' at any time to quit.")
+while True:
+    first = input("\nPlease give me a first name:")
+    if first == 'q':
+        break
+    last = input("Please give me a last name:")
+    if last == 'q':
+        break
+    population = input("Please give me a population name:")
+    if population == 'q':
+        break
+    formatted_name = get_formatted_name(first,last,population)
+    print("\tNeatly formatted name: " + formatted_name + ".")
+  ------------------------------------------------------------  
+    
+name_function.py
+#-*- coding:utf-8-*-
+#function 1
+# def get_formatted_name(first,last,middle=''):
+#     '''Generate a neatly formatted full name.'''
+#     if middle:
+#         full_name = first + ' ' + middle + ' ' + last
+#     else:
+#         full_name = first + ' ' + last
+#     return full_name.title()
+
+#print("============================================")
+#function 2
+def get_formatted_name(first,last,population=''):
+    '''Generate a neatly formatted full name.'''
+    if population:
+        full_name = first + ',' + last + ' - ' + 'population ' + str(population)
+        return full_name.split("-")[0].title() + '-' + full_name.split("-")[1]
+    else:
+        full_name = first + ',' + last
+        return full_name.title()
+     --------------------------------------------------------------------   
+  test_name_function.py
+  #-*- coding:utf-8-*-
+#function 1
+# import unittest
+# from name_function import get_formatted_name
+#
+# class NameTestCase(unittest.TestCase):
+#     '''测试name_function.py'''
+#     def test_first_last_name(self):
+#         '''能正确的处理像tian jun这样的姓名?'''
+#         formatted_name = get_formatted_name('janis','jopin')
+#         self.assertEqual(formatted_name,'Janis Jopin')
+#
+#     def test_first_last_middle_name(self):
+#         '''能够正确地处理xi yang yang 这样的姓名吗?'''
+#         formatted_name = get_formatted_name('xi','yang','yang')
+#         self.assertEqual(formatted_name,'Xi Yang Yang')
+#
+# unittest.main()
+
+
+import unittest
+from name_function import get_formatted_name
+class CityNameTset(unittest.TestCase):
+    '''test name_function.py'''
+    def test_city_country(self):
+        '''能正确的处理像tian jun这样的国家和城市的结合名称?'''
+        formated_name = get_formatted_name('china','tang shan')
+        self.assertEqual(formated_name,'China,Tang Shan')
+    def test_city_country_population(self):
+        '''能正确的处理像China,TangShan - population xxxx这样的结合名称?'''
+        formated_name = get_formatted_name('china','tang shan',50000)
+        self.assertEqual(formated_name,'China,Tang Shan - population 50000')
+
+unittest.main()
+=============================================================
