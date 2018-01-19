@@ -336,3 +336,22 @@ class TestAnonymousSurvey(unittest.TestCase):
 unittest.main()
 =================================================================
 运行测试脚本时，完成一个单元测试，python打印一个字符，测试通过时打印一个句点，测试报错时打印一个E，测试导致断言失败打印F
+
+····································································
+绘制图形
+# -*- coding:utf-8 -*-
+import matplotlib.pyplot as plt
+
+squares = [1,4,9,16,25]    #图形点
+input_value = [1,2,3,4,5]   #x轴坐标值
+plt.plot(input_value,squares,linewidth=5)  #linewidth 表示线条的粗细
+
+#设置图标的标题，给坐标添加标签
+plt.title("Square Numbers",fontsize=24)    #fontsize表示字体的大小
+plt.xlabel("Value",fontsize=14)
+plt.ylabel("Square of Value",fontsize=14)
+
+#设置刻度标记的大小
+# plt.tick_params('x',labelsize=5)   #labelsize表示坐标轴的字体大小
+plt.tick_params(labelsize=15)   #默认是坐标轴的字体都设置
+plt.show()
