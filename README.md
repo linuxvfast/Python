@@ -355,3 +355,8 @@ plt.ylabel("Square of Value",fontsize=14)
 # plt.tick_params('x',labelsize=5)   #labelsize表示坐标轴的字体大小
 plt.tick_params(labelsize=15)   #默认是坐标轴的字体都设置
 plt.show()
+===========================================
+pygal.i18n 在python3中无法使用需要安装pygal_maps_world
+
+pygal.Worldmap() 需要安装完pygal_maps_world才能使用，import pygal.maps.world
+调用为pygal.maps.world.World()
