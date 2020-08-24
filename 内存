@@ -1,0 +1,10 @@
+# 此缓存将内容保存至内存的变量中
+    # 配置：
+        CACHES = {
+            'default': {
+                'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+                'LOCATION': 'unique-snowflake',
+            }
+        }
+
+    # 注：其他配置同开发调试版本
