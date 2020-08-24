@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .pagnation .page {
+            display: inline-block;
+            padding: 5px;
+            background-color: burlywood;
+            margin-right: 5px;
+        }
+
+        .pagnation .page.active {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    {% for item in li %}
+        {% include 'li.html' %}
+    {% endfor %}
+</ul>
+<div class="pagnation">
+    {{ page_list }}
+    <input type="text" style="width: 30px; height: 20px;" placeholder="跳转"/>
+    <input type="button" id="target" value="跳转" onclick='ToPage("/user_list/?p=")'/>
+</div>
+<script>
+    function ToPage(base) {
+        var obj = document.getElementById('target');
+        var val = obj.previousElementSibling.value;
+        location.href = base + val;
+    }
+</script>
+</body>
+</html>
