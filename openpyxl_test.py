@@ -95,7 +95,7 @@ from openpyxl.styles import Font
 # sheet.column_dimensions['B'].width = 20  # 设置行宽
 # wb.save('dimensions.xlsx')
 
-#合并、拆分单元格
+# 合并、拆分单元格
 # wb = openpyxl.Workbook()
 # sheet = wb.active
 # sheet.merge_cells('A1:D3')
@@ -103,3 +103,25 @@ from openpyxl.styles import Font
 # sheet.merge_cells('C5:D5')
 # sheet['C5']='Two merged cells.'
 # wb.save('merged.xlsx')
+
+# wb = openpyxl.open('merged.xlsx')
+# sheet = wb.active
+# sheet.unmerge_cells('A1:D3')
+# sheet.unmerge_cells('C5:D5')
+# wb.save('merged.xlsx')
+
+# 冻结窗格
+# freeze_panes的设置                                       冻结的行和列
+# sheet.freeze_panes = 'A2'                                 行1
+# sheet.freeze_panes = 'B1'                                 列A
+# sheet.freeze_panes = 'C1'                                 列A和列B
+# sheet.freeze_panes = 'C2'                                 行1和列A和列B
+# sheet.freeze_panes = 'A1'或 sheet.freeze_panes = None      没有冻结窗格
+
+# wb = openpyxl.open('produceSales.xlsx')
+# sheet = wb.active
+# sheet.freeze_panes = 'C2'
+# wb.save('freezeExample.xlsx')
+
+
+# ===================图表==============================
