@@ -55,6 +55,7 @@ wb.save('updateProduceSales.xlsx')
 # ===================设置单元格的字体风格==============================
 
 from openpyxl.styles import Font
+
 # wb = openpyxl.Workbook()
 # sheet = wb.active
 # stylefont=Font(size=20,italic=True) #italic斜体
@@ -72,3 +73,33 @@ from openpyxl.styles import Font
 
 
 # ===================公式==============================
+# wb = openpyxl.Workbook()
+# sheet = wb.active
+# sheet['A1']=200
+# sheet['A2']=300
+# sheet['A3']='=SUM(A1:A2)'
+# wb.save('writeSUM.xlsx')
+
+# wb = openpyxl.open('writeSUM.xlsx')
+# sheet = wb.active
+# print(sheet['A3'].value)
+
+# 没有保存数据无法使用data_ongly=True来查询公式的结果数据
+
+# ===================调整行和列==============================
+#  wb = openpyxl.Workbook()
+# sheet = wb.active
+# sheet['A1'] = 'Tall row'
+# sheet['B2'] = 'Wide column'
+# sheet.row_dimensions[1].height = 70  # 设置行高
+# sheet.column_dimensions['B'].width = 20  # 设置行宽
+# wb.save('dimensions.xlsx')
+
+#合并、拆分单元格
+# wb = openpyxl.Workbook()
+# sheet = wb.active
+# sheet.merge_cells('A1:D3')
+# sheet['A1']='Twelve cells merged together.'
+# sheet.merge_cells('C5:D5')
+# sheet['C5']='Two merged cells.'
+# wb.save('merged.xlsx')
