@@ -53,3 +53,22 @@ wb.save('updateProduceSales.xlsx')
 '''
 
 # ===================设置单元格的字体风格==============================
+
+from openpyxl.styles import Font
+# wb = openpyxl.Workbook()
+# sheet = wb.active
+# stylefont=Font(size=20,italic=True) #italic斜体
+# sheet['A1'].font = stylefont
+# sheet['A1']='Hello world'
+
+# font1 = Font(name='Times New Roman', bold=True)  # bold粗体
+# sheet['A1'].font = font1
+# sheet['A1']='Bold Times'
+#
+# font2 = Font(size=24, italic=True)
+# sheet['B1'].font = font2
+# sheet['B1'] = '24 pt Italic'
+# wb.save('style.xlsx')
+
+
+# ===================公式==============================
