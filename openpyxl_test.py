@@ -125,18 +125,151 @@ from openpyxl.styles import Font
 
 
 # ===================图表==============================
-wb = openpyxl.Workbook()
-sheet = wb.active
+# wb = openpyxl.Workbook()
+# sheet = wb.active
 # for i in range(1, 11):
 #     # sheet['A' + str(i)] = i
 #     sheet.append([i])
 # wb.save('SamepleChart.xlsx')
 
-from openpyxl.chart import BarChart,Reference,Series
-values = Reference(sheet, min_col=1, min_row=1, max_col=1, max_row=10)
-chart = BarChart()
-chart.add_data(values)
-sheet.add_chart(chart, "E15")
-wb.save("SampleChart.xlsx")
+# from openpyxl.chart import BarChart,Reference,Series
+# values = Reference(sheet, min_col=1, min_row=1, max_col=1, max_row=10)
+# chart = BarChart()
+# chart.add_data(values)
+# sheet.add_chart(chart, "E15")
+# wb.save("SampleChart.xlsx")
+
+
+'''
+from openpyxl import Workbook
+from openpyxl.chart import ScatterChart, Series, Reference
+from openpyxl.chart.layout import Layout, ManualLayout
+
+wb = Workbook()
+ws = wb.active
+
+rows = [
+    ['Size', 'Batch 1', 'Batch 2'],
+    [2, 40, 30],
+    [3, 40, 25],
+    [4, 50, 30],
+    [5, 30, 25],
+    [6, 25, 35],
+    [7, 20, 40],
+]
+
+for row in rows:
+    ws.append(row)
+
+ch1 = ScatterChart()
+xvalues = Reference(ws, min_col=1, min_row=2, max_row=7)
+for i in range(2, 4):
+    values = Reference(ws, min_col=i, min_row=1, max_row=7)
+    series = Series(values, xvalues, title_from_data=True)
+    ch1.series.append(series)
+
+
+ch1.title = "Default layout"
+ch1.style = 13
+ch1.x_axis.title = 'Size'
+ch1.y_axis.title = 'Percentage'
+ch1.legend.position = 'r'
+
+ws.add_chart(ch1, "B10")
+
+from copy import deepcopy
+
+# Half-size chart, bottom right
+ch2 = deepcopy(ch1)
+ch2.title = "Manual chart layout"
+ch2.legend.position = "tr"
+ch2.layout=Layout(
+    manualLayout=ManualLayout(
+        x=0.25, y=0.25,
+        h=0.5, w=0.5,
+    )
+)
+ws.add_chart(ch2, "H10")
+
+# Half-size chart, centred
+ch3 = deepcopy(ch1)
+ch3.layout = Layout(
+    ManualLayout(
+    x=0.25, y=0.25,
+    h=0.5, w=0.5,
+    xMode="edge",
+    yMode="edge",
+    )
+)
+ch3.title = "Manual chart layout, edge mode"
+ws.add_chart(ch3, "B27")
+
+# Manually position the legend bottom left
+ch4 = deepcopy(ch1)
+ch4.title = "Manual legend layout"
+ch4.legend.layout = Layout(
+    manualLayout=ManualLayout(
+        yMode='edge',
+        xMode='edge',
+        x=0, y=0.9,
+        h=0.1, w=0.5
+    )
+)
+
+ws.add_chart(ch4, "H27")
+
+wb.save("chart_layout.xlsx")
+'''
+
+# 乘法表
+#
+# import sys
+# import openpyxl
+# from openpyxl.styles import Font
+#
+# try:
+#     num = int(sys.argv[1])
+#     wb = openpyxl.Workbook()
+#     sheet = wb.active
+#     styleFont = Font(bold=True)
+#     for i in range(1, num + 1):
+#         #首行、首列加粗
+#         sheet.cell(row=1, column=i + 1).font = styleFont
+#         sheet.cell(row=i + 1, column=1).font = styleFont
+#         #首行、首列数据
+#         sheet.cell(row=1, column=i + 1).value = i
+#         sheet.cell(row=i + 1, column=1).value = i
+#
+#         for j in range(1, num + 1):
+#             sheet.cell(row=i + 1, column=j + 1).value = i * j
+#
+#     wb.save('res.xlsx')
+# except IndexError as err:
+#     print('''
+#         Please input a the Number:
+#         example
+#         python   xxxx.py  6
+#     ''')
+
+
+# excel 插入空行
+'''
+import sys
+import openpyxl
+
+try:
+    start_row = int(sys.argv[1])
+    insert_row = int(sys.argv[2])
+    file = sys.argv[3]
+    wb = openpyxl.open('res.xlsx')
+    sheet = wb.active
+    sheet.insert_rows(start_row,insert_row)
+    wb.save('res.xlsx')
+except Exception as err:
+    print('缺少参数如:python  xxx.py 3 2 xxx.xlsx',err)
+
+'''
+
+
 
 
