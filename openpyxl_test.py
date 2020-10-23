@@ -125,3 +125,18 @@ from openpyxl.styles import Font
 
 
 # ===================图表==============================
+wb = openpyxl.Workbook()
+sheet = wb.active
+# for i in range(1, 11):
+#     # sheet['A' + str(i)] = i
+#     sheet.append([i])
+# wb.save('SamepleChart.xlsx')
+
+from openpyxl.chart import BarChart,Reference,Series
+values = Reference(sheet, min_col=1, min_row=1, max_col=1, max_row=10)
+chart = BarChart()
+chart.add_data(values)
+sheet.add_chart(chart, "E15")
+wb.save("SampleChart.xlsx")
+
+
